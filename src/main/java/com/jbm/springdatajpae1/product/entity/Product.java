@@ -3,21 +3,26 @@ package com.jbm.springdatajpae1.product.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "PRODUCT")
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUCT_SEQ")
+    @SequenceGenerator(sequenceName = "PRODUCT_SEQ", allocationSize = 1, name = "PRODUCT_SEQ")
+    private long id;
 
+    @Column(name = "NAME")
     private String name;
 
+    @Column(name = "PRICE")
     private int price;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
